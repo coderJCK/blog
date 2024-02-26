@@ -5,6 +5,7 @@ import footer from "./footer";
 import extraSideBar from "./extraSideBar";
 
 const author = "程序员chao";
+const domain = "https://coderjck.github.io/blog/";
 const tags = ["程序员", "编程", "计算机"];
 
 export default defineConfig({
