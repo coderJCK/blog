@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "serve": "vuepress dev .",
-    "build": "vuepress build ."
+    "build": "vuepress build .",
+    "deploy": "bash deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
