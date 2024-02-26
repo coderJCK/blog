@@ -10,6 +10,7 @@ const tags = ["程序员", "编程", "计算机"];
 
 export default defineConfig({
   title: "2026",
+  base: "/blog/",
   description: "记录个人笔记",
   head: [
     // 站点图标
