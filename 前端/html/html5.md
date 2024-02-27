@@ -168,11 +168,10 @@ data-xx="xx"
 
 定义 input 可能的值。
 <input type="text" list="a">
-<datalist id="a">
-
-<option>选项 1</option>
-<option>选项 2</option>
-</datalist>
+  <datalist id="a">
+    <option>选项 1</option>
+    <option>选项 2</option>
+  </datalist>
 </input>
 
 ```html
