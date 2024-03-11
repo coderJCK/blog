@@ -328,6 +328,7 @@ top/bottom：px
 
 （1）静态定位static
 默认值
+
 ```css
 position：static
 ```

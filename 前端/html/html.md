@@ -133,6 +133,7 @@ HyperText Markup language 超文本标记语言（网页的标准语言）
 <h4 align="center">四级标题</h4>
 <h5 align="center">五级标题</h5>
 <h6 align="center">六级标题</h6>
+
 ```html
 <h1 align="center">一级标题</h1>
 <h2 align="center">二级标题</h2>
@@ -147,6 +148,7 @@ HyperText Markup language 超文本标记语言（网页的标准语言）
 <p align="left">左对齐的段落</p>
 <p align="center">居中对齐的段落</p>
 <p align="right">右对齐的段落</p>
+
 ```html
 <p align="left">左对齐的段落</p>
 <p align="center">居中对齐的段落</p>
@@ -161,6 +163,7 @@ HyperText Markup language 超文本标记语言（网页的标准语言）
   <li>无序列表1</li>
   <li>无序列表1</li>
 </ul>
+
 ```html
 <!-- 
   type="square方形/disc实心圆/circle空心圆"
@@ -177,6 +180,7 @@ HyperText Markup language 超文本标记语言（网页的标准语言）
   <li>我是1</li>
   <li>我是2</li>
 </ol>
+
 ```html
 <!-- 
   type="1、A、I..."		按什么类型排序
@@ -193,7 +197,8 @@ HyperText Markup language 超文本标记语言（网页的标准语言）
   <dt>标题</dt>
   <dd>文本</dd>
 </dl>
-```HTML
+
+```html
 <dl>
   <dt>标题</dt>
   <dd>文本</dd>
@@ -355,6 +360,7 @@ HyperText Markup language 超文本标记语言（网页的标准语言）
 ### 8、图片
 
 <img src="https://www.baidu.com/img/bd_logo1.pn" title="我是图片" alt="图片加载失败"  />
+
 ```html
 <!-- 
   src---图片路径
@@ -370,6 +376,7 @@ HyperText Markup language 超文本标记语言（网页的标准语言）
 ### 9、水平线
 
 <hr width="50%" />
+
 ```html
 <!-- 
   color	颜色
