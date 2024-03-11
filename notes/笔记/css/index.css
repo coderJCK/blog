@@ -1,0 +1,31 @@
+/* 水平垂直居中——子元素 */
+.center_flex{
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 水平垂直居中——单行文本 */
+.center_text{
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+}
+.center_grid{
+  display: grid;
+  place-items: center;
+}
+.center_absolute_transform{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.center_absolute{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
