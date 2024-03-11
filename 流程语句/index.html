@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>条件语句 | 2026</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/blog/favicon.ico">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?2675818a983a3131404cee835018f016";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+      </script>
+    <meta name="description" content="记录个人笔记">
+    <meta property="article:modified_time" content="2024-02-26T12:57:55.000Z">
+    <meta property="og:site_name" content="2026">
+    <meta property="og:title" content="条件语句">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://coderjck.github.io/blog//%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/">
+    <meta name="twitter:title" content="条件语句">
+    <meta name="twitter:url" content="https://coderjck.github.io/blog//%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="程序员, 编程, 计算机">
+    <meta property="article:tag" content="程序员">
+    <meta name="keywords" content="编程导航, 前端, 开发, 编程分享, 项目, IT, 求职, 面经">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.80609ca5.css" as="style"><link rel="preload" href="/blog/assets/js/app.28bb32e1.js" as="script"><link rel="preload" href="/blog/assets/js/2.8198c07e.js" as="script"><link rel="preload" href="/blog/assets/js/46.460e8953.js" as="script"><link rel="prefetch" href="/blog/assets/js/1.17ea1209.js"><link rel="prefetch" href="/blog/assets/js/10.40b6837e.js"><link rel="prefetch" href="/blog/assets/js/11.78a8555f.js"><link rel="prefetch" href="/blog/assets/js/12.0b172d0b.js"><link rel="prefetch" href="/blog/assets/js/13.8352f638.js"><link rel="prefetch" href="/blog/assets/js/14.c7dc96c5.js"><link rel="prefetch" href="/blog/assets/js/15.970a8ca5.js"><link rel="prefetch" href="/blog/assets/js/16.ac3baac4.js"><link rel="prefetch" href="/blog/assets/js/17.c186ca40.js"><link rel="prefetch" href="/blog/assets/js/18.1cdd0514.js"><link rel="prefetch" href="/blog/assets/js/19.5740e4d6.js"><link rel="prefetch" href="/blog/assets/js/20.8885a4fa.js"><link rel="prefetch" href="/blog/assets/js/21.2a33c70e.js"><link rel="prefetch" href="/blog/assets/js/22.3e8347a6.js"><link rel="prefetch" href="/blog/assets/js/23.ceb5a5ff.js"><link rel="prefetch" href="/blog/assets/js/24.07267ac6.js"><link rel="prefetch" href="/blog/assets/js/25.15e1f641.js"><link rel="prefetch" href="/blog/assets/js/26.35b2bbdc.js"><link rel="prefetch" href="/blog/assets/js/27.84d94c72.js"><link rel="prefetch" href="/blog/assets/js/28.7cc9fc36.js"><link rel="prefetch" href="/blog/assets/js/29.5cf1d149.js"><link rel="prefetch" href="/blog/assets/js/3.4dc033c7.js"><link rel="prefetch" href="/blog/assets/js/30.85153484.js"><link rel="prefetch" href="/blog/assets/js/31.b49746b8.js"><link rel="prefetch" href="/blog/assets/js/32.78b8d6f5.js"><link rel="prefetch" href="/blog/assets/js/33.2e083b13.js"><link rel="prefetch" href="/blog/assets/js/34.430cc434.js"><link rel="prefetch" href="/blog/assets/js/35.4d1149b1.js"><link rel="prefetch" href="/blog/assets/js/36.eb9df6f7.js"><link rel="prefetch" href="/blog/assets/js/37.5b67a3be.js"><link rel="prefetch" href="/blog/assets/js/38.e61e3d9a.js"><link rel="prefetch" href="/blog/assets/js/39.c910d03b.js"><link rel="prefetch" href="/blog/assets/js/4.2f502b73.js"><link rel="prefetch" href="/blog/assets/js/40.352f6e63.js"><link rel="prefetch" href="/blog/assets/js/41.30271ba6.js"><link rel="prefetch" href="/blog/assets/js/42.0adea81d.js"><link rel="prefetch" href="/blog/assets/js/43.b66c2cf4.js"><link rel="prefetch" href="/blog/assets/js/44.b301ee8a.js"><link rel="prefetch" href="/blog/assets/js/45.57088b95.js"><link rel="prefetch" href="/blog/assets/js/47.08f18c7b.js"><link rel="prefetch" href="/blog/assets/js/48.5c6518eb.js"><link rel="prefetch" href="/blog/assets/js/49.39b78fb0.js"><link rel="prefetch" href="/blog/assets/js/5.7b1f056c.js"><link rel="prefetch" href="/blog/assets/js/50.709e3439.js"><link rel="prefetch" href="/blog/assets/js/51.081cbb18.js"><link rel="prefetch" href="/blog/assets/js/52.7bcff4b7.js"><link rel="prefetch" href="/blog/assets/js/53.ea7f5b28.js"><link rel="prefetch" href="/blog/assets/js/54.8142d71f.js"><link rel="prefetch" href="/blog/assets/js/55.71d34abc.js"><link rel="prefetch" href="/blog/assets/js/56.0d849bea.js"><link rel="prefetch" href="/blog/assets/js/57.5574405c.js"><link rel="prefetch" href="/blog/assets/js/58.dd0c5cda.js"><link rel="prefetch" href="/blog/assets/js/59.204288b9.js"><link rel="prefetch" href="/blog/assets/js/6.056886f1.js"><link rel="prefetch" href="/blog/assets/js/60.0a79787d.js"><link rel="prefetch" href="/blog/assets/js/61.1b324607.js"><link rel="prefetch" href="/blog/assets/js/62.57d1593f.js"><link rel="prefetch" href="/blog/assets/js/63.6ec3d2ab.js"><link rel="prefetch" href="/blog/assets/js/64.5925fbd6.js"><link rel="prefetch" href="/blog/assets/js/65.d4279228.js"><link rel="prefetch" href="/blog/assets/js/66.ce9e2933.js"><link rel="prefetch" href="/blog/assets/js/67.ce109228.js"><link rel="prefetch" href="/blog/assets/js/68.817a189d.js"><link rel="prefetch" href="/blog/assets/js/69.ad1029b6.js"><link rel="prefetch" href="/blog/assets/js/7.a96cecf9.js"><link rel="prefetch" href="/blog/assets/js/vendors~docsearch.33b2b47d.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.80609ca5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/logo.png" alt="2026" class="logo"> <span class="site-name can-hide">2026</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用" class="dropdown-title"><span class="title">常用</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用" class="mobile-dropdown-title"><span class="title">常用</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/常用/常用网址.html" class="nav-link">
+  常用网址
+</a></li><li class="dropdown-item"><!----> <a href="/blog/常用/常用命令.html" class="nav-link">
+  常用命令
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/前端/" class="nav-link">
+  前端
+</a></div> <a href="https://github.com/coderJCK/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用" class="dropdown-title"><span class="title">常用</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用" class="mobile-dropdown-title"><span class="title">常用</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/常用/常用网址.html" class="nav-link">
+  常用网址
+</a></li><li class="dropdown-item"><!----> <a href="/blog/常用/常用命令.html" class="nav-link">
+  常用命令
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/前端/" class="nav-link">
+  前端
+</a></div> <a href="https://github.com/coderJCK/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>条件语句</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#条件语句" class="sidebar-link">条件语句</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#if" class="sidebar-link">if</a></li><li class="sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#switch" class="sidebar-link">switch</a></li></ul></li><li><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#循环语句" class="sidebar-link">循环语句</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#while" class="sidebar-link">while</a></li><li class="sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#do-while" class="sidebar-link">do while</a></li><li class="sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#for" class="sidebar-link">for</a></li><li class="sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#for-in" class="sidebar-link">for in</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="content"><div style="width:100%"><div class="theme-default-content custom-content content__default"><h2 id="条件语句"><a href="#条件语句" class="header-anchor">#</a> 条件语句</h2> <h3 id="if"><a href="#if" class="header-anchor">#</a> if</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 1、单分支 if</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>条件<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// 条件为true时执行的代码</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 2、双分支 if else</span>
+ 
+<span class="token keyword">if</span><span class="token punctuation">(</span>条件<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// 条件为true时执行的代码</span>
+<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+  <span class="token comment">// 条件为true时执行的代码</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 3、多条 if else if else</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>条件<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 条件1为true时执行的代码</span>
+<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>条件<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 条件1为false,条件2为true时执行的代码</span>
+<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+    <span class="token comment">// 条件1、2都为false时执行的代码</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>举例</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> score <span class="token operator">=</span> <span class="token number">100</span> <span class="token comment">// 分数</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>score <span class="token operator">&gt;=</span> <span class="token number">90</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'优秀'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>score <span class="token operator">&gt;=</span> <span class="token number">80</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'良好'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>score <span class="token operator">&gt;=</span> <span class="token number">70</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'中等'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>score <span class="token operator">&gt;=</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'及格'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="switch"><a href="#switch" class="header-anchor">#</a> switch</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">switch</span><span class="token punctuation">(</span>条件<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> 值<span class="token number">1</span><span class="token operator">:</span>
+        <span class="token comment">// 条件为值1时执行的代码块</span>
+        <span class="token keyword">break</span>；
+    <span class="token keyword">case</span> 值<span class="token number">2</span><span class="token operator">:</span>
+        <span class="token comment">// 条件为值2时执行的代码块</span>
+        <span class="token keyword">break</span>；
+    <span class="token keyword">case</span> 值<span class="token number">3</span><span class="token operator">:</span>
+        <span class="token comment">// 条件为值3时执行的代码块</span>
+        <span class="token keyword">break</span>；
+    <span class="token keyword">default</span><span class="token operator">:</span>
+        <span class="token comment">// 条件为其他时执行的代码块</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>举例</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> season <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">switch</span> <span class="token punctuation">(</span>season<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'春天'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'夏天'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'秋天'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'冬天'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'输入错误'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h2 id="循环语句"><a href="#循环语句" class="header-anchor">#</a> 循环语句</h2> <h3 id="while"><a href="#while" class="header-anchor">#</a> while</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">while</span><span class="token punctuation">(</span>条件表达式<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token comment">// 代码块/循环体；</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token comment">// while循环计算1+...+100</span>
+<span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  num <span class="token operator">+=</span> i<span class="token punctuation">;</span>
+  i<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="do-while"><a href="#do-while" class="header-anchor">#</a> do while</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">do</span><span class="token punctuation">{</span>
+  <span class="token comment">// 代码块</span>
+<span class="token punctuation">}</span><span class="token keyword">while</span><span class="token punctuation">(</span>条件表达式<span class="token punctuation">)</span>；<span class="token comment">// 至少执行一次循环</span>
+
+
+<span class="token comment">// do循环计算1+...+100</span>
+<span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">do</span> <span class="token punctuation">{</span>
+  num <span class="token operator">+=</span> i<span class="token punctuation">;</span>
+  i<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="for"><a href="#for" class="header-anchor">#</a> for</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 语句1循环开始前执行</span>
+<span class="token comment">// 语句2运行循环的条件</span>
+<span class="token comment">// 语句3循环执行后执行</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>语句 <span class="token number">1</span><span class="token punctuation">;</span> 语句 <span class="token number">2</span><span class="token punctuation">;</span> 语句 <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 被执行的代码块</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 如计算1+...+100</span>
+<span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">100</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    num <span class="token operator">+=</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="for-in"><a href="#for-in" class="header-anchor">#</a> for in</h3> <p>循环对象的键名和键值，即属性名和属性值</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">fname</span><span class="token operator">:</span><span class="token string">&quot;Bill&quot;</span><span class="token punctuation">,</span><span class="token literal-property property">lname</span><span class="token operator">:</span><span class="token string">&quot;Gates&quot;</span><span class="token punctuation">,</span><span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">56</span><span class="token punctuation">}</span><span class="token punctuation">;</span> 
+<span class="token keyword">for</span><span class="token punctuation">(</span>x <span class="token keyword">in</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> obj<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment">/**
+    * fname Bill
+    * lname Gates
+    * age 56
+    */</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></div> <footer class="page-edit" style="margin:0;"><div class="edit-link"><a href="https://github.com/coderJCK/blog/edit/master/前端/js/基础语法/流程语句.md" target="_blank" rel="noopener noreferrer">在线编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最近更新:</span> <span class="time">2/26/2024, 8:57:55 PM</span></div></footer> <!----></div> <div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:86vh"><div style="font-weight:bold;">条件语句</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#条件语句" class="toc-sidebar-link">条件语句</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#if" class="toc-sidebar-link">if</a></li><li class="toc-sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#switch" class="toc-sidebar-link">switch</a></li></ul></li><li><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#循环语句" class="toc-sidebar-link">循环语句</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#while" class="toc-sidebar-link">while</a></li><li class="toc-sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#do-while" class="toc-sidebar-link">do while</a></li><li class="toc-sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#for" class="toc-sidebar-link">for</a></li><li class="toc-sidebar-sub-header"><a href="/blog/%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/#for-in" class="toc-sidebar-link">for in</a></li></ul></li></ul></div></div></div></div></div>  <main class="footer"> <div class="copy-right"><span class="name"> 编程导航   |     </span> <a target="_blank" rel="noreferrer">
+          
+        </a></div></main></main> <aside class="page-sidebar"> <div class="page-side-toolbar"></div>  </aside></div><div class="global-ui"><!----></div></div>
+    <script src="/blog/assets/js/app.28bb32e1.js" defer></script><script src="/blog/assets/js/2.8198c07e.js" defer></script><script src="/blog/assets/js/46.460e8953.js" defer></script>
+  </body>
+</html>
