@@ -1,11 +1,13 @@
 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/SVG)
 ## svg概述
 1、svg提供的是矢量图，缩放不会失真或降低质量
+
 ```html
 <!-- 绘制到svg标签中即可，svg必须设置宽度 -->
 <svg></svg>
 ```
 2、css可以利用style属性插入到元素的行间
+
 ```html
 <svg width="200px">
   <rect x="10" height="10" y="10" width="180" style="stroke: black; fill: red;"/>
@@ -13,6 +15,7 @@
 ```
 3、svg可以嵌套svg
 - 可以利用内部svg元素的属性viewBox、属性width和属性height简单创建一个新的坐标系统。
+
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
   <svg width="100" height="100" viewBox="0 0 50 50">
@@ -401,6 +404,7 @@ matrix(a,b,c,d,e,f) 需要用到矩阵
 ## 其他元素
 ###  1、容器元素g
 - 方便统一设置填充、描边、变换等属性
+
 ```html
 <g stroke="green" fill="white" stroke-width="5">
   <circle cx="25" cy="25" r="15" />
@@ -429,6 +433,7 @@ matrix(a,b,c,d,e,f) 需要用到矩阵
 ```
 
 ### 3、image
+
 ```html
 <svg>
   <image xlink:href="./xx.png" x="0" y="0" height="50" width="50" />

@@ -4,11 +4,13 @@
 **适合文字环绕效果**
 #### 1）设置浮动
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float)
+
 ```css
 float: left;
 ```
 #### 2）清除浮动
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float)
+
 ```css
 /* 方式1 clear:left/right/both */
 clear: both;
@@ -32,57 +34,68 @@ clear: both;
 **适合单行或单列布局**
 #### 1）定义弹性盒子
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout)
+
 ```css
 display: flex;
 ```
 #### 2）方向及换行
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-direction)
+
 ```css
 flex-direction: row;
 ```
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-wrap)
+
 ```css
 flex-wrap: wrap;
 ```
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-flow)
+
 ```css
 flex-flow: row wrap;
 ```
 #### 3）主轴排列方式
 主轴排列方式
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content)
+
 ```css
 justity-content: space-between;
 ```
 主轴各个元素的排列方式
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-items)
+
 ```css
 justity-items: space-items;
 ```
 主轴子项的排列方式
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-self)
+
 ```css
 justity-self: stretch;
 ```
 #### 4）侧轴排列方式
 侧轴单行排列方式
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items)
+
 ```css
 align-items: space-between;
 ```
 侧轴多行排列方式
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-content)
+
 ```css
 align-content: space-between;
 ```
 侧轴子项的排列方式
 
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-self)
+
 ```css
 align-self: stretch;
 ```
 #### 5）排列方式复合属性
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/place-content)
+
 ```css
 place-content: center;
 ```
@@ -91,12 +104,14 @@ place-content: center;
 place-items: center;
 ```
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/place-self)
+
 ```css
 place-self: center;
 ```
 #### 6）子项属性
 放大
 - [详情](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
+
 ```css
 flex-grow: 1;
 ```
@@ -107,11 +122,13 @@ flex-shrink: 1;
 ```
 初始大小
 - [详情](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis)
+
 ```css
 flex-basis: 1;
 ```
 简写
 - [详情](https://developer.mozilla.org/en-US/docs/Web/CSS/flex)
+
 ```css
 flex: 1;
 ```
@@ -119,47 +136,56 @@ flex: 1;
 **适合多行多列布局**
 #### 1）显式网格属性
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout)
+
 ```css
 display: grid;
 ```
 行
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-template-rows)
+
 ```css
 grid-template-rows: auto;
 ```
 列
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-template-columns)
+
 ```css
 grid-template-columns: auto;
 ```
 网格区域
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-template-areas)
+
 ```css
 grid-template-areas: "b b . a";
 ```
 #### 2）隐式网格属性
 行
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-rows)
+
 ```css
 grid-auto-rows: auto;
 ```
 列
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-columns)
+
 ```css
 grid-auto-columns: auto;
 ```
 自动布局
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-flow)
+
 ```css
 grid-auto-flow: row;
 ```
 列间隔
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-gap)
+
 ```css
 column-gap: 2rem;
 ```
 行间隔
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/row-gap)
+
 ```css
 row-gap: 2rem;
 ```
@@ -169,6 +195,7 @@ row-gap: 2rem;
 
 ### 盒子阴影
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow)
+
 ```css
 box-shadow：h-shadow v-shadow  blur spread color inset;
 ```
@@ -195,12 +222,14 @@ border-radius: 10px 20px 30px 40px; /* 分别设置左上、右上、右下、�
 
 线性渐变
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient())
+
 ```css
 background: linear-gradient(to bottom, #e66465, #9198e5);
 background: linear-gradient(#e66465, #9198e5);
 ```
 陉向渐变
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/radial-gradient())
+
 ```css
 background: radial-gradient(to bottom, #e66465, #9198e5);
 background: radial-gradient(#e66465, #9198e5);
@@ -211,6 +240,7 @@ background: radial-gradient(#e66465, #9198e5);
 > transform只是视觉效果的变化，不会影响盒子的布局
 > transform不会导致浏览器重绘和回流，因此效率极高
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform)
+
 ```css
 /* 位移 */
 transform: translate(45deg);
@@ -223,6 +253,7 @@ transform: skew(50deg);
 ```
 修改变形的原点
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-origin)
+
 ```css
 transform-origin: center; /* 设置原点在盒子中心 */
 transform-origin: left top; /* 设置原点在盒子左上角 */
@@ -232,12 +263,14 @@ transform-origin: 30px 60px; /* 设置原点在盒子坐标 (30, 60) 位置 */
 ## 过渡
 > 能影响的只有数值类属性，例如：颜色、宽高、字体大小等等
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition)
+
 ```css
 transition: 过渡属性 持续时间 过渡函数 过渡延迟
 ```
 ## 动画
 > 能影响的只有数值类属性，例如：颜色、宽高、字体大小等等
 - [示例](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation)
+
 ```css
 animation: 3s linear 1s infinite alternate slidein;
 ```
@@ -255,6 +288,7 @@ animation: 3s linear 1s infinite alternate slidein;
 设置自定义字体
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face)
 - [阿里巴巴矢量图标库](https://www.iconfont.cn/)
+
 ```css
 @font-face {
   font-family: "Open Sans";
@@ -275,6 +309,7 @@ css3支持使用`vw`和`vh`作为单位，分别表示`视口宽度`和`视口�
 ![image-20210514134908778](http://mdrs.yuanjin.tech/img/20210514134908.png)
 ## 平滑滚动
 - [详情](https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-behavior)
+
 ```css
 scroll-behavior: smooth
 ```
@@ -287,5 +322,6 @@ scroll-behavior: smooth
 通过`::before`和`::after`选择器，可以通过css给元素生成两个子元素
 
 <img src="http://mdrs.yuanjin.tech/img/20210514140049.png" alt="image-20210514140049244" style="zoom:50%;" />
+
 使用伪元素可以避免在HTML中使用过多的空元素
 **伪元素必须要有`content`属性，否则不能生效，如果不需要有元素内容，设置`content:''`**

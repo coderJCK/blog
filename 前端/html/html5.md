@@ -168,11 +168,10 @@ data-xx="xx"
 
 定义 input 可能的值。
 <input type="text" list="a">
-<datalist id="a">
-
-<option>选项 1</option>
-<option>选项 2</option>
-</datalist>
+  <datalist id="a">
+    <option>选项 1</option>
+    <option>选项 2</option>
+  </datalist>
 </input>
 
 ```html
@@ -191,6 +190,7 @@ data-xx="xx"
   <input type="text" id="b">=
   <output id="c"></output>
 </form>
+
 ```html
 <form action="" oninput="c.value=parseInt(a.value)+parseInt(b.value)">
   <input type="text" id="a">+
@@ -250,6 +250,7 @@ video 定义视频，支持 MP4 webp ogg 三种格式
 source 定义多媒体资源 配合 audio video 使用
 
 <source></source>
+
 ```html
 <!-- 
   src 引入文件路径
