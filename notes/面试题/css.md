@@ -1,3 +1,25 @@
+## 基础
+### CSS选择器
+> `基础`：id、class、属性和伪类、element和伪元素、通配符  
+> `复合`：后代、子、兄弟、交集、并集...
+### CSS继承和层叠
+> 继承： 子元素会继承父元素的某些样式，如字体（大小、样式、粗细）、文本（行高、对齐方式、颜色、大小写）、list-style、cursor、opacity、visibility等
+> 层叠： 多个规则应用于一个元素时，最终样式的确定方式。基于源顺序、优先级、重要性等。
+### CSS盒模型
+> 盒模型由content + padding + border + margin 组成  
+> `标准盒模型(box-sizing: content-box)`: 元素的宽高只包括content区域   
+> `怪异盒模型(box-sizing: border-box)`：元素的宽高包括了content、padding和border  
+### BEM
+> block\element\modifier是一种CSS类命名的约定，旨在使CSS更易于维护。  
+> .block__element--modifier表示一个块的元素版本，其中包含了一个修饰符来表示不同的状态或版本。
+### BFC & IFC & GFC & FFC
+> `GFC`：网格布局格式化上下文，将一块区域以 grid 网格的形式来格式化
+> `FFC`：弹性格式化上下文，将一块区域以弹性盒的形式来格式化
+> `IFC`：行内格式化上下文，将一块区域以行内元素的形式来格式化。
+> `BFC`：块级格式化上下文，是指一个独立的布局环境，内部元素与外部元素互不影响  
+> 触发方式：浮动、overflow设置为hidden/auto/scroll、position设置为absolute/fixed  
+> 应用： 解决浮动元素令父元素高度塌陷的问题、解决非浮动元素被浮动元素覆盖问题、解决外边距垂直方向重合的问题
+
 ## 布局
 
 ## 文字
