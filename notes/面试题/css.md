@@ -1,10 +1,16 @@
 ## 基础
+### @import & link
+> 1. 语法不同。@import是一种css规则。link是一个html标签
+> 2. 加载顺序不同。@import是css加载后再引入，可能阻塞页面。 link是并行加载css文件，不会导致阻塞。
+> 3. 兼容性不同。@import是css2.1引入的特性，存在兼容性问题。 link没有兼容性问题
+> 4. 适用范围不同。link可以指定媒体类型等
+> 5. js操作。 link可以在js中动态插入或者删除。
 ### CSS选择器
 > `基础`：id、class、属性和伪类、element和伪元素、通配符  
 > `复合`：后代、子、兄弟、交集、并集...
 ### CSS继承和层叠
-> 继承： 子元素会继承父元素的某些样式，如字体（大小、样式、粗细）、文本（行高、对齐方式、颜色、大小写）、list-style、cursor、opacity、visibility等
-> 层叠： 多个规则应用于一个元素时，最终样式的确定方式。基于源顺序、优先级、重要性等。
+> `继承`： 子元素会继承父元素的某些样式，如字体（大小、样式、粗细）、文本（行高、对齐方式、颜色、大小写）、list-style、cursor、opacity、visibility等
+> `层叠`： 多个规则应用于一个元素时，最终样式的确定方式。基于源顺序、优先级、重要性等。
 ### CSS盒模型
 > 盒模型由content + padding + border + margin 组成  
 > `标准盒模型(box-sizing: content-box)`: 元素的宽高只包括content区域   
