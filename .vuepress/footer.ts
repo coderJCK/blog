@@ -12,7 +12,7 @@ export default {
       href: "https://blog.csdn.net/kjc513?spm=1000.2115.3001.5343",
     },
     {
-      label: "CSDN",
+      label: "稀土掘金",
       href: "https://juejin.cn/user/3839941571780046",
     },
   ],
