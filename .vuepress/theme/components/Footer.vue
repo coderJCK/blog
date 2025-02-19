@@ -7,10 +7,10 @@
             </a>
         </div>
         <div class="copy-right">
-           <span class="name">{{`${currentYear} 编程导航 &nbsp; |  &nbsp; `}} </span>
-            <a :href="government.href" target="_blank" rel="noreferrer" >
-              {{government.name}}
-            </a>
+          <span class="name">{{`${currentYear} 编程导航 &nbsp; |  &nbsp; `}} </span>
+          <a :href="government.href" target="_blank" rel="noreferrer" >
+            {{government.name}}
+          </a>
         </div>
     </main>
 </template>
