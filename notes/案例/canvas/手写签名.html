@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      border: 1px solid gray;
+      background-color: #f5f1f1;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas width="500" height="500" id="canvas"></canvas>
+  <button type="button" id="saveBtn">保存</button>
+  <script>
+    class Canvas {
+      constructor(canvas) {
+        this.ctx = canvas.getContext('2d');
+        this.canvasDom = canvas;
+        this.width = canvas.width;
+        this.height = canvas.height;
+        // 初始信息
+        this.color = 'red';  // 颜色
+        this.size = 10;  // 线宽
+        this.fontSize = 30; // 字体大小
+        this.fontFamily = 'sans-serif'; // 字体
+        this.textAlign = 'left';  // 文字对齐方式
+        this.textBaseline = 'top';  // 文字基线
+        this.lineCap = 'round';  // 线端末端样式 butt | round | square
+        this.isHandWrite = false; //  是否开始手写
+      }
+      init() {
+        this.ctx.strokeStyle = this.color;
+        this.ctx.lineWidth = this.size;
+        this.ctx.font = `${this.fontSize}px ${this.fontFamily}`;
+        this.ctx.textAlign = this.textAlign;
+        this.ctx.textBaseline = this.textBaseline;
+        this.ctx.lineCap = this.lineCap;
+      }
+
+      // 画笔方法
+
+      setHandWrite(isOpen) {
+        // 监听鼠标按压
+        this.canvasDom.addEventListener('mousedown', (e) => {
+          this.isHandWrite = true;
+          this.x = e.offsetX
+          this.y = e.offsetY;
+        });
+        // 监听鼠标抬起
+        this.canvasDom.addEventListener('mouseup', (e) => {
+          this.isHandWrite = false;
+        });
+        // 监听鼠标滑动
+        this.canvasDom.addEventListener('mousemove', (e) => {
+          if (this.isHandWrite) {
+            this.drawPath(this.x, this.y, e.offsetX, e.offsetY, false);
+            this.x = e.offsetX;
+            this.y = e.offsetY;
+          }
+        });
+        // 解除监听
+        if (!isOpen) {
+          this.canvasDom.removeEventListener('mousedown', () => { });
+          this.canvasDom.removeEventListener('mouseup', () => { });
+          this.canvasDom.removeEventListener('mousemove', () => { });
+        }
+      }
+
+      /* 
+        * 设置画笔颜色
+        * @param {String} color 颜色
+        */
+      setStrokeStyle(color) {
+        this.color = color;
+        this.ctx.fillStyle = color;
+        this.ctx.strokeStyle = color;
+      }
+
+      /*
+        * 设置画笔大小
+        * @param {Number} size 线宽
+        */
+      setLineWidth(size) {
+        this.size = size;
+        this.ctx.lineWidth = size;
+      }
+
+      // 文字方法
+
+      /*
+        * 设置字体大小
+        * @param {Number} size 字体大小
+        */
+      setFontSize(size) {
+        this.fontSize = size;
+      }
+
+      /*
+        * 设置字体
+        * @param {String} family 字体
+        */
+      setFontFamily(family) {
+        this.fontFamily = family;
+      }
+
+      /*
+        * 设置文字对齐方式
+        * @param {String} align 对齐方式
+        * @param {String} baseline 基线
+        */
+      setTextAlign(align, baseline) {
+        this.textAlign = align;
+        this.textBaseline = baseline;
+      }
+
+      // 绘制方法
+
+      /*
+        * 绘制路径
+        * @param {Number} x1 起点x坐标
+        * @param {Number} y1 起点y坐标
+        * @param {Number} x2 终点x坐标
+        * @param {Number} y2 终点y坐标
+        * @param {Boolean} isClose 是否闭合
+        */
+      drawPath(x1, y1, x2, y2, isClose = false) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(x1, y1); // 起点
+        if (isClose) {
+          this.ctx.lineTo(x1, y1);  // 终点
+          this.ctx.lineTo(x2, y2);  // 终点
+          this.ctx.lineTo(x2, y1);  // 终点
+          this.ctx.closePath();
+        } else {
+          this.ctx.lineTo(x2, y2);  // 终点
+        }
+        this.ctx.stroke();
+      }
+      /* 
+        * 绘制矩形
+        * @param {Number} x 起点x坐标
+        * @param {Number} y 起点y坐标
+        * @param {Number} width 终点x坐标
+        * @param {Number} height 终点y坐标
+        * @param {String} color 颜色
+        * @param {Boolean} isFill 是否填充
+        * @param {Number} size 线宽
+        */
+      drawRect(x, y, width, height, isFill = false) {
+        if (isFill) {
+          this.ctx.fillStyle = color;
+          this.ctx.fillRect(x, y, width, height);
+          // 写法二
+          // this.ctx.rect(x, y, width, height);
+          // this.ctx.fill();
+        } else {
+          this.ctx.strokeRect(x, y, width, height);
+          // 写法二
+          // this.ctx.rect(x, y, width, height);
+          // this.ctx.stroke();
+        }
+      }
+      /*
+        * 绘制圆角矩形
+        * @param {Number} x 起点x坐标
+        * @param {Number} y 起点y坐标
+        * @param {Number} width 终点x坐标
+        * @param {Number} height 终点y坐标
+        * @param {Number} radius 圆角半径
+        * @param {Boolean} isFill 是否填充
+        * @param {Number} size 线宽
+        */
+      drawRoundRect(x, y, width, height, radius, isFill = false,) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(x, y + radius);
+        this.ctx.lineTo(x, y + height - radius);
+        this.ctx.arcTo(x, y + height, x + radius, y + height, radius);
+        this.ctx.lineTo(x + width - radius, y + height);
+        this.ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+        this.ctx.lineTo(x + width, y + radius);
+        this.ctx.arcTo(x + width, y, x + width - radius, y, radius);
+        this.ctx.lineTo(x + radius, y);
+        this.ctx.arcTo(x, y, x, y + radius, radius);
+        this.ctx.closePath();
+        if (isFill) {
+          this.ctx.fill();
+        } else {
+          this.ctx.stroke();
+        }
+      }
+      /*
+        * 绘制圆形
+        * @param {Number} x 圆心x坐标
+        * @param {Number} y 圆心y坐标
+        * @param {Number} radius 半径
+        * @param {String} color 颜色
+        * @param {Number}  起始弧度
+        * @param {Number}  终止弧度
+        * @param {Boolean}  是否逆时针
+        * @param {Boolean}  是否填充
+        * @param {Number}  线宽
+        */
+      drawCircle(x, y, radius, startAngle = 0, endAngle = Math.PI * 2, direction = false, isFill = false) {
+        this.ctx.beginPath();
+        this.ctx.arc(x, y, radius, startAngle, endAngle, direction);
+        if (isFill) {
+          this.ctx.fill();
+        } else {
+          this.ctx.stroke();
+        }
+      }
+      /* 
+        * 贝塞尔曲线
+        * @param {Number} x 起点x坐标
+        * @param {Number} y 起点y坐标
+        * @param {Array} position1 控制点1
+        * @param {Array} position2 控制点2
+        * @param {Array} position3 控制点3
+        * @param {String} color 颜色
+        * @param {Number} size 线宽
+      */
+      drawBezier(x, y, position1, position2, position3) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(x, y);
+        if (position3.length > 0) {
+          this.ctx.bezierCurveTo(position1[0], position1[1], position2[0], position2[1], position3[0], position3[1]);
+        } else {
+          this.ctx.quadraticCurveTo(position1[0], position1[1], position2[0], position2[1]);
+        }
+        this.ctx.stroke();
+      }
+      /*
+        * 绘制文字
+        * @param {Number} x 起点x坐标
+        * @param {Number} y 起点y坐标
+        * @param {String} text 文字
+        * @param {Boolean} isFill 是否实心
+        */
+      drawText(x, y, text, isFill = true) {
+        this.ctx.font = `${this.fontSize}px ${this.fontFamily}`;
+        this.ctx.textAlign = this.textAlign;
+        this.ctx.textBaseline = this.textBaseline;
+        if (isFill) {
+          this.ctx.fillText(text, x, y);
+        } else {
+          this.ctx.strokeText(text, x, y);
+        }
+      }
+      /*
+        * 绘制图片
+        * @param {String} src 图片路径
+        */
+      drawImage(src) {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          this.ctx.fillStyle = this.ctx.createPattern(img, 'no-repeat');;
+          this.ctx.fillRect(0, 0, 200, 200); // 图片填充，图片被裁剪了
+        }
+      }
+
+      //  变换方法
+
+      /*
+        * 平移
+        * @param {Number} x x轴平移距离
+        * @param {Number} y y轴平移距离
+        */
+      setTranslate(x, y) {
+        this.ctx.translate(x, y);
+      }
+      /*
+        * 旋转
+        * @param {Number} angle 旋转角度
+        * @param {Number} x 旋转中心x坐标 
+        * @param {Number} y 旋转中心y坐标
+        */
+      setRotate(angle, x, y) {
+        this.ctx.rotate(angle, x, y);
+      }
+      /*
+        * 缩放
+        * @param {Number} x x轴缩放比例
+        * @param {Number} y y轴缩放比例
+        */
+      setScale(x, y) {
+        this.ctx.scale(x, y);
+      }
+      /*
+        * 设置渐变
+        * @param {Number} x 起点x坐标
+        * @param {Number} y 起点y坐标
+        * @param {Number} width 终点x坐标
+        * @param {Number} height 终点y坐标
+        * @param {Array} colorArr 颜色数组
+        * @param {Array} positionArr 颜色位置数组
+        * @param {String} type 渐变类型
+        * @param {Array} radiusArr 径向渐变半径数组
+        */
+      setGradient(x, y, width, height, colorArr, positionArr, type = 'linear', radiusArr) {
+        let gradient;
+        if (type === 'linear') {
+          // 线性渐变
+          gradient = this.ctx.createLinearGradient(x, y, width, height);
+        } else {
+          // 径向渐变
+          gradient = this.ctx.createRadialGradient(radiusArr[1], radiusArr[1], radiusArr[0], radiusArr[1], radiusArr[1], radiusArr[1]);
+        }
+        colorArr.forEach((item, index) => {
+          gradient.addColorStop(positionArr[index], item);
+        });
+        this.ctx.fillStyle = gradient;
+        this.ctx.fillRect(0, 0, width, height);
+      }
+      /*
+        * 设置阴影
+        * @param {Number} x 阴影x偏移
+        * @param {Number} y 阴影y偏移
+        * @param {Number} blur 阴影模糊度
+        * @param {String} color 阴影颜色
+        * @param {String} type 阴影类型
+        * @param {Number} width 阴影宽度
+        * @param {Number} height 阴影高度
+        * @param {Number} radius 阴影圆角
+        * @param {Number} offset 阴影偏移
+        * @param {Number} angle 阴影角度
+        * @param {Number} opacity 阴影透明度
+        * @param {Number} spread 阴影扩散
+        * @param {Number} inset 阴影内阴影
+        */
+      setShadow(x, y, blur, color, type = 'box', width, height, radius, offset, angle, opacity, spread, inset) {
+        this.ctx.shadowOffsetX = x;
+        this.ctx.shadowOffsetY = y;
+        this.ctx.shadowBlur = blur;
+        this.ctx.shadowColor = color;
+        if (type === 'box') {
+          this.ctx.shadowBox = `${width}px ${height}px ${radius}px ${offset}px ${angle}deg ${opacity} ${spread} ${inset}`;
+        }
+        this.ctx.fillRect(x, y, width, height);
+      }
+
+      // 状态方法
+
+      /*
+        * 存储
+        * description: 保存坐标轴的当前状态, 包括坐标轴的变换和属性
+        */
+      save() {
+        this.ctx.save();
+      }
+      /*
+        * 恢复
+        * description: 恢复到上一次保存的状态
+        */
+      restore() {
+        this.ctx.restore();
+      }
+      /*
+        * 清除
+        * description: 清除画布上的内容
+        */
+      clear() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+      }
+      getPng() {
+        const el = document.createElement('a');
+        el.href = this.canvasDom.toDataURL();
+        el.download = '文件名称';
+        const event = new MouseEvent('click');
+        el.dispatchEvent(event);
+      }
+    }
+
+  </script>
+  <script>
+    const canvas = new Canvas(document.querySelector('#canvas'));
+    canvas.setHandWrite(true);
+    const saveBtn = document.querySelector('#saveBtn');
+    saveBtn.onclick = () => {
+      canvas.getPng()
+    }
+  </script>
+</body>
+
+</html>

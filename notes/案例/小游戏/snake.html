@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>贪吃蛇</title>
+  <style>
+    /* 样式初始化 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    #app {
+      width: 362px;
+      height: 100%;
+      margin: auto;
+      overflow: auto;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    #info {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* 地图样式 */
+    #map {
+      width: 360px;
+      height: 360px;
+      margin: 0 auto;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 一行格子的盒子 */
+    .divRow {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .dialog {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      line-height: 100px;
+      color: rgb(217, 128, 128);
+      background-color: rgba(125, 124, 124, 0.505);
+      display: none;
+    }
+
+    .finishDialog {
+      width: 120px;
+      line-height: 30px;
+      box-sizing: border-box;
+      padding: 20px 5px;
+    }
+
+    /* 操作栏 */
+    #control {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 0 10px;
+      align-items: center;
+    }
+
+    .btn {
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .startBtn {
+      background-color: rgba(56, 227, 124, 0.54);
+    }
+
+    .restartBtn {
+      background-color: rgba(246, 126, 126, 0.548);
+    }
+
+    .stopBtn {
+      background-color: rgba(209, 200, 35, 0.548);
+    }
+
+    /* 方向控制 */
+    .keyboard {
+      margin: 10px auto;
+      width: 50%;
+      height: 120px;
+      display: flex;
+      box-sizing: border-box;
+      padding: 0 10px;
+      position: relative;
+    }
+
+    .keyboard>div {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    .up {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .down {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .left {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    .right {
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    /* 说明 */
+    .tips {
+      font-size: 14px;
+      color: #666;
+      height: 100px;
+    }
+  </style>
+</head>
+<!--  -->
+
+<body>
+  <div id="app">
+    <!-- 信息面板 -->
+    <div id="info">
+      <div>历史最高:<span class="maxScore"></span></div>
+      <div>当前分数:<span class="curScore">0</span></div>
+    </div>
+    <!-- 地图 -->
+    <div id="map">
+      <div class="stopDialog dialog">游戏已暂停!</div>
+      <div class="finishDialog dialog"></div>
+    </div>
+    <!-- 操作栏 -->
+    <div id="control">
+      <div class="restartBtn btn">重新开始</div>
+      <div class="startBtn btn">开始游戏</div>
+      <div class="stopBtn btn">暂停游戏</div>
+    </div>
+    <div class="keyboard">
+      <div class="up" onclick="keyDown(38)">⬆️</div>
+      <div class="down" onclick="keyDown(40)">⬇️</div>
+      <div class="left" onclick="keyDown(37)">⬅️</div>
+      <div class="right" onclick="keyDown(39)">➡️</div>
+    </div>
+    <div class="tips">
+      游戏说明: 回车键——开始游戏;<br>
+      &emsp;&emsp;&emsp;&emsp;&ensp;上下左右键盘——移动;<br>
+      &emsp;&emsp;&emsp;&emsp;&ensp;空格键——暂停;<br>
+    </div>
+  </div>
+  <script>
+    // 地图信息
+    var mapInfo = {
+      x: 30, // 横向小格子数量
+      y: 30,  // 纵向小格子数量
+      size: 11, // 小格子大小
+      color: "papayawhip", // 小格子颜色
+      arrMap: [],  // 所有的小格子节点
+    };
+    // 🐍信息
+    var snakeInfo = {
+      x: [], // 🐍身体的横坐标
+      y: [], // 🐍身体的纵坐标
+      direction: 37, // 🐍身体的方向
+      bodyColor: "skyblue", // 🐍身体颜色
+      headColor: "red", // 🐍头部颜色
+      length: 3, // 🐍身体长度
+    }
+    // 键盘
+    const KeyCode = {
+      left: 37,
+      up: 38,
+      right: 39,
+      down: 40,
+    }
+    // 食物信息
+    var foodInfo = {
+      x: 9, // 食物的横坐标
+      y: 3, // 食物的纵坐标
+      color: "green", // 食物颜色
+    }
+    var isStop = false;  // 是否暂停
+    var Dom = {
+      curScore: document.querySelector(".curScore"), // 当前分数
+      maxScore: document.querySelector(".maxScore"), // 最高分数
+      startBtn: document.querySelector(".startBtn"), // 开始按钮
+      stopBtn: document.querySelector(".stopBtn"), // 暂停按钮
+      restartBtn: document.querySelector(".restartBtn"), // 重新开始按钮
+      stopDialog: document.querySelector(".stopDialog"), // 暂停弹窗
+      finishDialog: document.querySelector(".finishDialog"), // 结束弹窗
+    }
+
+    // 函数自调用
+    window.onload = function () {
+      createMap();  // 创建地图
+      // 第一次点击按钮之后，回车键会和按钮的点击事件会产生关联
+      Dom.startBtn.onclick = init;  // 开始游戏
+      Dom.curScore.innerHTML = snakeInfo.length - 3; //当前分数
+      Dom.maxScore.innerHTML = localStorage.getItem("maxScore") || '暂无记录'; //最高分数
+      document.onkeydown = keyDown; //监听键盘事件
+      Dom.stopBtn.onclick = function () {
+        stopGame();
+      }
+      Dom.restartBtn.onclick = function () {
+        Dom.finishDialog.style.display = "none";
+        if (snakeInfo.x.length == 0) {
+          init();
+          return;
+        };
+        clearSnake(snakeInfo.x, snakeInfo.y); // 清除蛇身
+        reSet();
+        init();
+      }
+    }
+    /**
+     * 初始化
+     */
+    function init() {
+      if (snakeInfo.x.length == 0) {
+        Dom.finishDialog.style.display = "none";
+        Dom.stopDialog.style.display = "none";
+        createSnake();  // 创建蛇身
+        createFood(); //创建食物
+        move = setInterval("snakeMove()", 200); //每个两百秒蛇身移动
+      }
+    }
+    /**
+     * 初始地图
+     */
+    function createMap() {
+      var map = document.getElementById("map");
+      for (y = 0; y < mapInfo.y; y++) {
+        let divRow = document.createElement("div");
+        divRow.className = "divRow";
+        //创建一行
+        for (x = 0; x < mapInfo.x; x++) {
+          divRow.innerHTML += `
+          <div class="divDot" style="
+            width:${mapInfo.size}px;
+            height:${mapInfo.size}px;
+            background:${mapInfo.color}"></div>
+        `;
+        }
+        map.appendChild(divRow);  // 节点添加到地图中
+        mapInfo.arrMap.push(divRow);  // 节点添加到地图数组中
+      }
+    }
+    /**
+     * 随机生成蛇的位置
+     */
+    function createSnake() {
+      var result; //判斷是否需要重新生成食物
+      // 保持蛇随机出现在地图1/4~3/4的位置，防止刚出来就撞墙
+      const maxRow = mapInfo.x * 3 / 4;
+      const minRow = mapInfo.x / 4;
+      const maxCol = mapInfo.y * 3 / 4;
+      const minCol = mapInfo.y / 4;
+      // 随机方向
+      const directionArr = Object.values(KeyCode);
+      snakeInfo.direction = directionArr[Math.floor(Math.random() * directionArr.length)];
+      // 随机x坐标位置
+      snakeInfo.x[0] = Math.round(Math.random() * (maxRow - minRow) + minRow);
+      // 随机y坐标位置
+      snakeInfo.y[0] = Math.round(Math.random() * (maxCol - minCol) + minCol);
+      for (i = 1; i < snakeInfo.length; i++) {
+        switch (snakeInfo.direction) {
+          case KeyCode.up:
+            snakeInfo.x[i] = snakeInfo.x[0];
+            snakeInfo.y[i] = snakeInfo.y[0] + i;
+            break;
+          case KeyCode.down:
+            snakeInfo.x[i] = snakeInfo.x[0];
+            snakeInfo.y[i] = snakeInfo.y[0] - i;
+            break;
+          case KeyCode.left:
+            snakeInfo.x[i] = snakeInfo.x[0] + i;
+            snakeInfo.y[i] = snakeInfo.y[0];
+            break;
+          case KeyCode.right:
+            snakeInfo.x[i] = snakeInfo.x[0] - i;
+            snakeInfo.y[i] = snakeInfo.y[0];
+            break;
+          default:
+            break;
+        }
+      }
+    }
+    function reSet() {
+      mapInfo.arrMap[foodInfo.y].children[foodInfo.x].style.background = mapInfo.color; // 清除食物
+      clearInterval(move);
+      snakeInfo.x = [];
+      snakeInfo.y = [];
+      snakeInfo.direction = 37;
+      snakeInfo.length = 3;
+      Dom.curScore.innerHTML = snakeInfo.length - 3;
+      isStop = false;
+    }
+    /**
+     * 渲染蛇身
+     */
+    function parseSnake() {
+      const arrX = [...snakeInfo.x];
+      const arrY = [...snakeInfo.y];
+      mapInfo.arrMap[arrY[0]].children[arrX[0]].style.background = snakeInfo.headColor;
+      for (i = 1; i < arrY.length; i++) {
+        const row = mapInfo.arrMap[arrY[i]];
+        row.children[arrX[i]].style.background = snakeInfo.bodyColor;
+      }
+    }
+    /**
+     * 清除蛇身
+     * @param {Array} arrX 蛇身x坐标数组
+     * @param {Array} arrY 蛇身y坐标数组
+     */
+    function clearSnake(arrX, arrY) {
+      for (i = 0; i < arrY.length; i++) {
+        const row = mapInfo.arrMap[arrY[i]];
+        row.children[arrX[i]].style.background = mapInfo.color;
+      }
+    }
+
+    /**
+     * 蛇身移动
+     */
+    function snakeMove() {
+      // 移动前位置
+      let oldX = [...snakeInfo.x];
+      let oldY = [...snakeInfo.y];
+      // 蛇身位置为移动前的蛇身前一节的位置
+      for (let i = 1; i < snakeInfo.length; i++) {
+        snakeInfo.x[i] = oldX[i - 1];
+        snakeInfo.y[i] = oldY[i - 1];
+      }
+      // 仅蛇头位置变化
+      switch (snakeInfo.direction) {
+        case KeyCode.up:
+          snakeInfo.y[0] -= 1;
+          break;
+        case KeyCode.down:
+          snakeInfo.y[0] += 1;
+          break;
+        case KeyCode.left:
+          snakeInfo.x[0] -= 1;
+          break;
+        case KeyCode.right:
+          snakeInfo.x[0] += 1;
+          break;
+        default:
+          break;
+      }
+      // 判断是否吃到自己
+      const condition1 = snakeInfo.x.slice(3).some((item, index) => {
+        return (item == snakeInfo.x[0]) && (snakeInfo.y[index + 3] == snakeInfo.y[0]);
+      });
+      // 判断是否蛇头撞墙
+      const condition2 = (snakeInfo.direction == KeyCode.up || KeyCode.down) &&
+        (snakeInfo.x[0] < 0 || snakeInfo.x[0] >= mapInfo.x);
+      const condition3 = (snakeInfo.direction == KeyCode.left || KeyCode.right) &&
+        (snakeInfo.y[0] < 0 || snakeInfo.y[0] >= mapInfo.y);
+      if (condition1 || condition2 || condition3) {
+        const score = snakeInfo.length - 3;
+        clearSnake(oldX, oldY); // 清除蛇身
+        reSet();
+        Dom.finishDialog.style.display = "block";
+        Dom.finishDialog.innerHTML = "游戏结束<br>您的得分为" + (score);
+        if (!localStorage.getItem("maxScore")) {
+          localStorage.setItem("maxScore", score);
+          Dom.maxScore.innerHTML = score;
+        }
+        if (localStorage.getItem("maxScore") < score) {
+          localStorage.setItem("maxScore", score);
+          Dom.maxScore.innerHTML = score;
+        }
+        return;
+      }
+      // 判断是否吃到食物
+      if (snakeInfo.x[0] == foodInfo.x && snakeInfo.y[0] == foodInfo.y) {
+        snakeInfo.length++; // 蛇身长度加1
+        // 吃到食物前的蛇尾坐标
+        snakeInfo.x.push(oldX[oldX.length - 1]);
+        snakeInfo.y.push(oldY[oldY.length - 1]);
+        createFood();
+      }
+      //清除原蛇身
+      clearSnake(oldX, oldY);
+      //重新渲染蛇身
+      parseSnake();
+      Dom.curScore.innerHTML = snakeInfo.length - 3; //当前分数
+    }
+
+    /**
+     * 创建食物
+     */
+    function createFood() {
+      do {
+        result = false;
+        foodInfo.x = Math.floor(Math.random() * mapInfo.x);
+        foodInfo.y = Math.floor(Math.random() * mapInfo.y);
+        // 如果出现在蛇身上，则重新生成
+        if (snakeInfo.x.includes(foodInfo.x) && snakeInfo.y.includes(foodInfo.y)) {
+          result = true;
+          continue;
+        }
+        const row = mapInfo.arrMap[foodInfo.y];
+        row.children[foodInfo.x].style.background = foodInfo.color;
+      } while (result);
+      // 不满足条件，结束循环
+    }
+    /**
+     * 键盘事件
+     * @param {number || Object}  键盘按键
+     */
+    function keyDown(event) {
+      let newKey;
+      if (typeof event == 'number') {
+        newKey = event;
+      } else {
+        newKey = event.keyCode;
+      }
+      const oldKey = snakeInfo.direction; //蛇当前方向
+      // 开始游戏
+      if (newKey == '13') {
+        init();
+      };
+      if (snakeInfo.x.length == 0) return;
+      if (isStop) return;
+      // 禁止掉头
+      if (oldKey == KeyCode.left && newKey == KeyCode.right) return;
+      if (oldKey == KeyCode.right && newKey == KeyCode.left) return;
+      if (oldKey == KeyCode.up && newKey == KeyCode.down) return;
+      if (oldKey == KeyCode.down && newKey == KeyCode.up) return;
+      // 暂停
+      if (newKey == '32') {
+        stopGame();
+        return;
+      }
+      // 按键必须是上下左右
+      if (Object.values(KeyCode).includes(newKey)) {
+        snakeInfo.direction = newKey;
+        clearInterval(move);
+        move = setInterval("snakeMove()", 200); //每个两百秒蛇身移动
+      }
+    }
+    /**
+     * 暂停游戏
+     */
+    function stopGame() {
+      if (snakeInfo.x.length == 0) return;
+      isStop = !isStop;
+      if (isStop) {
+        clearInterval(move);
+        Dom.stopDialog.style.display = "block";
+      } else {
+        Dom.stopDialog.style.display = "none";
+        move = setInterval("snakeMove()", 200); //每个两百秒蛇身移动
+      }
+    }
+  </script>
+</body>
+
+</html>
