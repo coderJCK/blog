@@ -9,7 +9,7 @@ const domain = "https://coderjck.github.io/blog/";
 const tags = ["程序员", "编程", "计算机"];
 
 export default defineConfig({
-  title: "2026",
+  title: "chao",
   base: "/blog/",
   description: "记录个人笔记",
   head: [

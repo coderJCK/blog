@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片上传与压缩</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    div.box {
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    img {
+      height: auto;
+      margin-top: 20px;
+    }
+
+    #img-box {
+      display: none;
+      flex-direction: column;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <input type="file" id="fileInput" accept="image/*">
+    <div id="img-box">
+      <span>压缩前</span>
+      <img id="preview1" alt="图片压缩前预览">
+      <span>压缩后</span>
+      <img id="preview2" alt="图片压缩后预览">
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const preview1 = document.getElementById('preview1');
+    const preview2 = document.getElementById('preview2');
+    const imgBox = document.getElementById('img-box');
+    fileInput.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const type = file.type;
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const img = new Image();
+          img.src = event.target.result;
+          img.onload = function () {
+            preview1.src = img.src;
+            // 压缩图片
+            const compressedImage = compressImage(img, 0.2, type); // 压缩质量为 0.7
+            preview2.src = compressedImage;
+            imgBox.style.display = 'flex';
+            console.log('压缩前大小：', getSizeImage(img.src));
+            console.log('压缩后大小：', getSizeImage(compressedImage));
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+    function getSizeImage(base64Image) {
+      // 去除数据前缀
+      const base64Data = base64Image.split(',')[1];
+      // 计算原始数据大小（字节）
+      const padding = base64Data.endsWith('==') ? 2 : base64Data.endsWith('=') ? 1 : 0;
+      const sizeInBytes = (base64Data.length * 3 / 4) - padding;
+      const size = sizeInBytes / 1024 + 'kb';
+      return size;
+    }
+    function compressImage(img, quality, type) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      // 设置 canvas 的宽度和高度
+      canvas.width = img.width;
+      canvas.height = img.height;
+      // 将图片绘制到 canvas 上
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      // 将 canvas 内容转换为压缩后的图片数据
+      const compressedDataUrl = canvas.toDataURL(type, quality);
+      return compressedDataUrl;
+    }
+  </script>
+</body>
+
+</html>
