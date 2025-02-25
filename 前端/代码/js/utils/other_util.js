@@ -1,8 +1,5 @@
-
-
-
 /**
- * 解析多层级的JSON格式
+ * 解析JSON格式
  * @param {String} data
 */
 
@@ -22,7 +19,6 @@ function parseJSON(data) {
     }
     return true;
   }
-  console.log(isJson(data))
   if (isJson(data)) {
     const obj = JSON.parse(data);
     let result = {};

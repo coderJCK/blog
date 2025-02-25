@@ -1,3 +1,10 @@
+/*
+ * @Author: kongjinghcao
+ * @Date: 2023-09-12 14:26:21
+ * @Last Modified by: kongjinghcao
+ * @Last Modified time: 2025-02-25 14:40:34
+ * @Description: 复制
+ */
 const copy = {
   bind(el, { value }, vnode) {
     // eslint-disable-next-line no-param-reassign

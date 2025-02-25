@@ -2,8 +2,8 @@
  * @Author: kongjinghcao
  * @Date: 2023-11-10 16:35:39
  * @Last Modified by: kongjinghcao
- * @Last Modified time: 2023-12-04 15:52:56
- * @Description: 工具函数
+ * @Last Modified time: 2025-02-25 14:43:12
+ * @Description: 设备工具函数
  */
 
 export const ANDROID_DEVICE = 0;

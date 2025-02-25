@@ -2,8 +2,8 @@
  * @Author: kongjinghcao
  * @Date: 2023-11-10 16:35:39
  * @Last Modified by: kongjinghcao
- * @Last Modified time: 2023-12-05 11:36:07
- * @Description: 工具函数
+ * @Last Modified time: 2025-02-25 14:43:07
+ * @Description: 图片工具函数
  */
 
 // 拼接图片base64

@@ -2,7 +2,7 @@
  * @Author: kongjinghcao
  * @Date: 2023-11-09 16:57:04
  * @Last Modified by: kongjinghcao
- * @Last Modified time: 2023-12-05 11:30:13
+ * @Last Modified time: 2025-02-25 14:42:09
  * @Description: 工具函数-模块化
  */
 // api/store/router等都可以使用
@@ -21,7 +21,7 @@ export function initModules(req, type = 'js') {
   // 模块名称列表
   const fileNames = req
     .keys()
-    .map((item) => item.split('./')[1])
+    .map((item) => item.split('/').slice(-1)[0])
     .map((item) => item.split(`.${type}`)[0]);
   // 模块文件列表
   const files = req.keys().map(req);

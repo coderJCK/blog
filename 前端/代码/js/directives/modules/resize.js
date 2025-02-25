@@ -1,4 +1,10 @@
-// 拖拽拉伸宽度
+/*
+ * @Author: kongjinghcao
+ * @Date: 2023-09-12 14:26:21
+ * @Last Modified by: kongjinghcao
+ * @Last Modified time: 2025-02-25 14:40:44
+ * @Description: 拖拽拉伸宽度
+ */
 const resize = {
   bind(el) {
     el.addEventListener('mousedown', (e) => {
