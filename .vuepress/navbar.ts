@@ -12,8 +12,8 @@ export default [
     {
         text: "前端",
         items: [
-            {text: "知识库",link: "/知识库/index.md"},
-            {text: "面试题",link: "/面试题/index.md"},
+            {text: "知识库",link: "/前端/知识库.md"},
+            {text: "面试题",link: "/前端/面试题.md"},
         ]
     },
 ] as NavItem[];
