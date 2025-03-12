@@ -1,6 +1,6 @@
 # HTML
 
-## 概念问题
+## 概念相关
 
 ### 语义化
 > HTML5 语义化是指通过使用**具有明确含义的标签**，使网页的结构和内容更加清晰，方便浏览器、开发者以及搜索引擎理解网页内容。
@@ -65,7 +65,19 @@
 ```
 
 
-## 标签问题
+### File Api
+**File对象**
+> File 实例对象: new File(array, name [, options])
+> 包含name、size、type、lastModified属性
+> 包含slice方法（slice继承的Blob而来）
+**FileList对象**
+> FileList 对象是一个类似数组的对象，代表一组选中的文件，每个成员都是一个 File 实例。
+**FileReader对象**
+> new FileReader();
+> 属性：**FileReader.result**：读取完成后的文件内容，有可能是字符串，也可能是一个 ArrayBuffer 实例。
+> 方法：**FileReader.result**：读取完成后的文件内容、**FileReader.readAsDataURL( )**：读取完成后，result 属性将返回一个 Data URL 格式（ Base64 编码）的字符串，代表文件内容。**FileReader.readAsText( )**：读取完成后，result 属性将返回文件内容的文本字符串。**FileReader.readAsArrayBuffer( )**：以 ArrayBuffer 的格式读取文件，读取完成后 result 属性将返回一个 ArrayBuffer 实例。
+
+## 标签相关
 
 ### 标签的类别
 > 行内、块、行内块
